@@ -1,0 +1,87 @@
+<% include ./partials/header2 %>
+
+<div class="container-fluid animated zoomInUp" style="font-family: 'Oswald', sans-serif;">
+    <div class="row justify-content-center" style="margin-top: 8em">
+        <div class="col-12 col-md-8 col-lg-6 pb-5">
+
+            <!--Form with header-->
+
+                <form class="text-center border border-light p-5" style="background: white" action="/sendEmail" method="post" enctype="multipart/form-data">
+                    <p class="h3 mb-3">Final Step</p>
+                    <p class="h4 mb-4">Send Email</p>
+                    <label class="btn-bs-file btn bg-dark waves-effect btn-block rounded-0 py-2 mb-4">
+                        <i class="fa fa-file-upload" style="margin-right: 0.8em"></i>
+                        Upload downloaded File
+                        <input type="file" name="pdfFile" id="uploadfile" required/>
+                    </label>
+
+                    <!-- Title -->
+                    <input type="text" id="title" name="title" class="form-control mb-4" placeholder="File Title" required>
+
+
+                    <!-- Copy -->
+                    <div class="custom-control custom-checkbox mb-4">
+                        <input checked disabled type="checkbox" name="clientCheck" class="custom-control-input" id="clientCheck">
+                        <label class="custom-control-label" for="clientCheck">Send to Client</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-4">
+                        <input type="checkbox" name="techCheck" class="custom-control-input" id="techCheck">
+                        <label class="custom-control-label" for="techCheck">Send to Technician</label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-4">
+                        <input type="checkbox" name="anotherCheck" class="custom-control-input" id="anotherCheck">
+                        <label class="custom-control-label" for="anotherCheck">Send to another person</label>
+                    </div>
+
+                    <!-- Email -->
+                    <input disabled type="email" id="anotherInput" name="anotherEmail" class="form-control mb-4" placeholder="E-mail">
+
+                    <!-- Send button -->
+                    <div class="loader"></div>
+                    <button class="btn bg-dark btn-block" id="upload" type="submit"><i class="fa fa-paper-plane" style="margin-right: 0.8em"></i>Send</button>
+
+                </form>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var update_form = function () {
+        if ($("#anotherCheck").is(":checked")) {
+            $('#anotherInput').prop('disabled', false);
+        }
+        else {
+            $('#anotherInput').prop('disabled', 'disabled');
+
+        }
+    };
+    $(update_form);
+    $("#anotherCheck").change(update_form);
+
+        $(document).ready(function() {
+        $('#upload').bind("click",function()
+        {
+            var imgVal = $('#uploadfile').val();
+            if(imgVal=='')
+            {
+                alert("Please select a pdf file");
+                return false;
+            }
+
+
+        });
+    });
+    $("#upload").click(function () {
+        $(".mainDiv").css("opacity", "0.4");
+        $("#nav").css("opacity", "0.4");
+        $("footer").css("opacity", "0.4");
+        $("#myVideo").css("opacity", "0.4");
+        $(".loader").css("display", "block")
+    })
+
+</script>
+
+<% include ./partials/footer %>

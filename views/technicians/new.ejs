@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<div class="container" style="padding: 10em 20em 10em 20em ;">
+    <form class="text-center border border-light p-5"  action="/technicians/new" method="post">
+
+        <p class="h4 mb-4">Add Technician</p>
+
+        <!-- Name -->
+
+        <input type="text" id="company" name="company" class="form-control mb-4" placeholder="Company">
+
+        <!-- Email -->
+
+        <input type="text" id="contactPerson" name="contactPerson" class="form-control mb-4" placeholder="Contact Person">
+
+
+        <!-- Email -->
+
+        <input type="email" id="email" name="email" class="form-control mb-4" placeholder="E-mail">
+
+
+        <!-- Phone -->
+        <input type="tel" id="phone" name="phone" class="form-control mb-4" placeholder="Phone">
+
+        <!-- Address -->
+        <input type="text" id="address" name="address" class="form-control mb-4" placeholder="Address">
+
+        <!-- Send button -->
+        <button class="btn bg-dark btn-block" type="submit">Add Technician</button>
+
+    </form>
+</div>
+
+<% include ../partials/footer %>

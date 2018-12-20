@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Work Order - Management System</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.18.1/moment.min.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/tempusdominus/bootstrap-4/master/build/js/tempusdominus-bootstrap-4.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/fonbootstrap.min.csst-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/tempusdominus/bootstrap-4/master/build/css/tempusdominus-bootstrap-4.css">
+    <link rel="icon" href="/img/logo.gif">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab:100,300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/css/index.css" rel="stylesheet">
+    <link href="/css/style2.css" rel="stylesheet">
+
+    <!--Review Page Dependencies-->
+    <link rel="stylesheet" href="/css/signature-pad.css">
+</head>
+
+<body class="hm-gradient">
+<div class="loader"><img src="http://i.imgur.com/KUJoe.gif"></div>
+<div class="mainDiv"><!--Navbar -->
+<nav id="nav" class="navbar navbar-expand-lg fixed-top scrolling-navbar" style="background: transparent;">
+    <div class="container" style="color: white;">
+        <a class="navbar-brand" href="/" style="color: white;font-family: 'Roboto Slab', serif;font-weight: 400">Work Order</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="color: white;font-family: 'Oswald', sans-serif;">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#features" style="color: white;font-family: 'Oswald', sans-serif;, serif;">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#about" style="color: white;font-family: 'Oswald', sans-serif;">About <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#uses" style="color: white;font-family: 'Oswald', sans-serif;">Frequent Uses</a>
+                </li>
+
+                <% if (user){ %>
+                <li class="nav-item dropdown" style="margin-left: 3em">
+                    <a class="nav-link dropdown-toggle" style="font-family: 'Oswald', sans-serif;" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Work Order</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="/orders" style="font-family: 'Oswald', sans-serif;">Orders</a>
+                        <a class="dropdown-item" href="/technicians" style="font-family: 'Oswald', sans-serif;">Technicians</a>
+                        <a class="dropdown-item" href="/clients" style="font-family: 'Oswald', sans-serif;">Clients</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="color: white;font-family: 'Oswald', sans-serif;">Logout</a>
+                </li>
+                <% }else{ %>
+                <li class="nav-item" style="margin-left: 3em">
+                    <a class="nav-link" href="/login" style="color: white;font-family: 'Oswald', sans-serif;">Login</a>
+                </li>
+                <li class="nav-item" style="color: #fff; margin-top: 0.5em">|</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register" style="color: white;font-family: 'Oswald', sans-serif;">Register</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+<video autoplay muted loop id="myVideo">
+    <source src="/video1.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>

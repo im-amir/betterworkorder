@@ -1,0 +1,24 @@
+.signature-pad--body {
+  position: relative;
+  border: 1px solid #f4f4f4;
+}
+
+.signature-pad--body
+canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.signature-pad--footer {
+}
+
+.signature-pad--actions {
+
+}
+
+
+
+@media (max-width: 940px) {
+
+}

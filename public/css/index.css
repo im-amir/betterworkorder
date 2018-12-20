@@ -1,0 +1,113 @@
+@font-face {
+    font-family: MyriadPro;
+    src: url("/font/MyriadPro-Regular.otf") format("otf")
+}
+@font-face {
+    font-family: labelFont;
+    src: url("/font/MyriadPro-Regular.otf");
+}
+
+.image {
+    background-size: cover;
+    height: 770px;
+    margin-top: -20px;
+}
+.image .heading {
+    color: white;
+    text-align: center;
+    padding-top: 200px;
+}
+.image p {
+    text-align: center;
+    padding: 20px 60px;
+}
+.image p .btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    font-size: 1.2em;
+}
+.image p .btn:hover {
+    color: #c57ed3;
+    border-color: #c57ed3;
+}
+
+h5.about {
+    font-family: MyriadPro;
+    line-height: 2em;
+}
+
+#about {
+    background: #F8F9FA;
+}
+
+#uses {
+    background: white;
+}
+
+
+.codePen {
+    width: 70px;
+    height: 70px;
+    background-color: #1C2331;
+    border-radius: 50%;
+    box-shadow: 0 6px 10px 0 #666;
+
+    font-size: 50px;
+    line-height: 70px;
+    color: white;
+    text-align: center;
+
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+
+    transition: all 0.1s ease-in-out;
+}
+
+.codePen:hover {
+    box-shadow: 0 6px 14px 0 #666;
+    transform: scale(1.05);
+}
+
+.btn-bs-file{
+    position:relative;
+    border: 1px solid #CED4DA;
+}
+.btn-bs-file input[type="file"]{
+    position: absolute;
+    opacity: 0;
+    width:0;
+    height:0;
+}
+
+
+.loader { width:100px;
+    height: 100px;
+    position: fixed;
+    top: 40%;
+    left: 45%;
+}
+.mainDiv {
+    display:none;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.panel {
+  height: 100%;
+  width: 100%;
+}
+.panel.green {
+    margin-bottom: 400px
+}

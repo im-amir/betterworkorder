@@ -1,0 +1,140 @@
+<section class="featuresPanel">
+
+<!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4" style="font-family: 'Roboto Slab', serif;">
+
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Grid column -->
+            <div class="col-md-6 mt-md-0 mt-3">
+
+                <!-- Content -->
+                <h5 class="text-uppercase">Privacy Policy</h5>
+                <p>BetterWorkOrder is designed for any service based company who does single or multiple work orders for clients which may be billed at a later time through your billing software.</p>
+
+            </div>
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none pb-3">
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Explore</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#features">Features</a>
+                    </li>
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+                    <li>
+                        <a href="#uses">Frequent Uses</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase">Start Now</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="/orders">Orders</a>
+                    </li>
+                    <li>
+                        <a href="/clients">Clients</a>
+                    </li>
+                    <li>
+                        <a href="technicians">Technicians</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- Grid column -->
+
+
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2018 Copyright:
+        <a href="https://workorder.com"> WorkOrder.com</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</section>
+</div>
+
+<script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+
+<script src="/js/jquery.paroller.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="/js/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="/js/mdb.min.js"></script>
+
+<script src="/vendor/jquery-easing/jquery.easing.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="/js/index.js"></script>
+
+<script src="/js/signature_pad.umd.js"></script>
+<script src="/js/app.js"></script>
+<script>
+    $(function () { // wait for document ready
+        // init
+        var controller = new ScrollMagic.Controller({
+            globalSceneOptions: {
+                triggerHook: 'onLeave'
+            }
+        });
+
+        // get all slides
+        var slides = document.querySelectorAll("section.featuresPanel");
+
+        // create scene for every slide
+        for (var i=0; i<slides.length; i++) {
+            new ScrollMagic.Scene({
+                triggerElement: slides[i]
+            })
+                .setPin(slides[i])
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(controller);
+        }
+
+
+    });
+    $("#submit").click(function () {
+        $(".mainDiv").css("opacity", "0.4");
+        $("#nav").css("opacity", "0.4");
+        $("footer").css("opacity", "0.4");
+        $("#myVideo").css("opacity", "0.4");
+        $(".loader").css("display", "block")
+    })
+    $(function() {
+        $(".loader").delay(800).fadeOut(500, function() {
+            $(".mainDiv").fadeIn(500);
+        });
+    });
+</script>
+</body>
+
+</html>

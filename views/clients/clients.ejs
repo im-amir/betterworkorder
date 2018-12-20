@@ -1,0 +1,71 @@
+<% include ../partials/header %>
+<!-- Header -->
+<header>
+    <div class="masthead">
+        <div class="image jumbotron" style="background: url('/img/clients/clients-header.jpg') no-repeat center;
+        background-size: cover;"
+             data-paroller-factor="0.5"
+             data-paroller-factor-xs="0.2">
+            <div class="container" style="margin-top: 10em">
+                <h1 class="heading" style="width: 40%; font-family: 'Monotype Corsiva'; font-size: 64px;">Meet Our Clients</h1>
+                <a class="btn btn-large smooth-scroll" style="margin-left: 12em; color: white;font-weight: bold" href="#client">Explore</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container" style="padding: 10em 0;font-family: 'Oswald', sans-serif;" id="client">
+    <h1 class="h1-responsive text-center font-weight-bold">Clients</h1>
+    <div class="row mt-5">
+        <% for(let i = 0; i < clients.length; i++) { %>
+            <div class="col-sm-12 col-md-4 mt-5" id="card<%= i %>">
+                <!-- Card Wider -->
+                <div class="card card-cascade wider">
+
+                    <!-- Card image -->
+
+                    <!-- Card content -->
+                    <div class="card-body card-body-cascade text-center">
+                        <i id="close<%= i %>" class="fas fa-times" style="float: right; margin-top: -1em;"></i>
+
+                        <!-- Title -->
+                        <h4 class="card-title"><strong><%= clients[i].company %></strong></h4>
+                        <!-- Subtitle -->
+                        <h5 class="text-muted pb-2"><strong><%= clients[i].phone %></strong></h5>
+                        <!-- Text -->
+                        <p class="card-text"><%= clients[i].address %></p>
+
+                        <!-- Linkedin -->
+                        <a class="px-2 fa-lg li-ic"><i class="fab fa-linkedin-in"></i></a>
+                        <!-- Twitter -->
+                        <a class="px-2 fa-lg tw-ic"><i class="fab fa-twitter"></i></a>
+                        <!-- Dribbble -->
+                        <a class="px-2 fa-lg fb-ic"><i class="fab fa-facebook-f"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+        <% } %>
+
+        <div class="col-sm-12 col-md 4">
+            <a href="/clients/new"><button type="submit" class="codePen">+</button></a>
+        </div>
+    </div>
+</div>
+<script>
+    let clients =  <%- JSON.stringify(clients)%>
+    for (let i = 0; i < clients.length; i++){
+        $(`#close${i}`).click(function () {
+            $.ajax({
+                url: "/clients/delete",
+                method: "post",
+                data: {id: clients[i]._id}
+            })
+            $(`#card${i}`).css("display", "none")
+        })
+    }
+
+</script>
+<% include ../partials/footer %>

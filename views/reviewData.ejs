@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Work Order</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style2.css">
+    <link href="/css/mdb.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+    <link rel="stylesheet" href="/css/signature-pad.css">
+
+    <link rel="stylesheet" type="text/css" href="/css/ie9.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+</head>
+
+<body class="hm-gradient" style="font-family: 'Oswald', sans-serif;">
+
+<!--Navbar -->
+<nav id="nav" class="navbar navbar-expand-lg fixed-top scrolling-navbar" style="background: transparent;">
+    <div class="container" style="color: white;">
+        <a class="navbar-brand" href="/" style="color: white;font-family: 'Oswald', sans-serif;font-weight: 400">Work Order</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-3" aria-controls="navbarSupportedContent-3" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent-3">
+            <ul class="navbar-nav ml-auto nav-flex-icons">
+                <li class="nav-item">
+                    <a class="nav-link" href="/" style="color: white;font-family: 'Oswald', sans-serif;">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#features" style="color: white;font-family: 'Oswald', sans-serif;">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#about" style="color: white;font-family: 'Oswald', sans-serif;">About <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link smooth-scroll" href="#uses" style="color: white;font-family: 'Oswald', sans-serif;">Frequent Uses</a>
+                </li>
+
+                <% if (user){ %>
+                <li class="nav-item dropdown" style="margin-left: 3em">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Oswald', sans-serif;">Work Order</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink" style="font-family: 'Oswald', sans-serif;">
+                        <a class="dropdown-item" href="/orders">Orders</a>
+                        <a class="dropdown-item" href="/technicians">Technicians</a>
+                        <a class="dropdown-item" href="/clients">Clients</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="color: white;">Logout</a>
+                </li>
+                <% }else{ %>
+                <li class="nav-item" style="margin-left: 3em">
+                    <a class="nav-link" href="/login" style="color: white;">Login</a>
+                </li>
+                <li class="nav-item" style="color: #fff; margin-top: 0.5em">|</li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/register" style="color: white;">Register</a>
+                </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
+<video autoplay muted loop id="myVideo">
+    <source src="/video1.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+</video>
+<section id="send" style="margin: 10em 20em;">
+        <div class="animated bounceInLeft">
+            <div class="wrapper-review-info" style="background: #EAF0F9">
+                <div id="wrapper-outer" class="text-center">
+                    <p class="h1-responsive" style="font-family: 'Oswald', sans-serif; padding-top: 1em">Order Details</p>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 col-md-4">
+                            <h4>Client Info</h4>
+                            <p>Company:<%= currentClient.company %><br>contactPerson: <%= currentClient.contactPerson %><br>Phone: <%= currentClient.phone %><br>Address: <%= currentClient.address %></p>
+                        </div>
+                        <div class="col-sm-12 col-md-4" style="border-left: 1px solid;">
+                            <h4>Technician Info</h4>
+                            <p>Company:<%= currentTech.company %><br>contactPerson: <%= currentTech.contactPerson %><br>Phone: <%= currentTech.phone %><br>Address: <%= currentTech.address %></p>
+                        </div>
+                        <div class="col-sm-12 col-md-4" style="border-left: 1px solid;">
+                            <h4>Service Times</h4>
+                            <p>Start: <%= currentOrder.start %><br>Stop: <%= currentOrder.stop %><br>
+                                <%= currentOrder.totalHours %> hours and <%= Math.round(currentOrder.totalMinutes) %> minutes total</p>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-sm-12 col-md-6">
+                            <h4>Services Performed</h4>
+                            <p><%= currentOrder.Services%></p>
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="border-left: 1px solid;">
+                            <h4>Recommendations</h4>
+                            <p><%= currentOrder.Recommendations %></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <h4>Notes</h4>
+                            <p><%= currentOrder.Notes %></p>
+                        </div>
+                        <div class="col-sm-12 col-md-6" style="border-left: 1px solid;">
+                            <h4>Parts And Materials</h4>
+                            <p><%= currentOrder.PartsAndMaterials %></p>
+                        </div>
+                    </div>
+                    <h4 style="font-weight: bold" class="mt-5">Client Signature</h4>
+                    <div id="signature-pad" style="margin-bottom: 1em;" class="signature-pad">
+                        <div class="signature-pad--body">
+                            <canvas style="position:absolute; right: 0em;"></canvas>
+                        </div>
+                    </div>
+                    <p><%= currentOrder.dateNow %></p>
+                </div>
+                <br><br>
+                <button class="btn"><a style="color: black" href="/orders/new">Back</a></button>
+                <button id="btnDownload" class="btn btn-dark" onclick="genPDF()">Download</button>
+                <button id="btnNext" class="btn btn-dark" disabled><a style="color: white;" href="/sendEmail">Next</a></button>
+            </div>
+        </div>
+</section>
+<script type="text/javascript" >
+    function genPDF() {
+        domtoimage.toPng(document.getElementById("wrapper-outer"))
+            .then(function (dataUrl) {
+                console.log("pressed")
+                let img = new Image();
+                img.src = dataUrl;
+                let doc = new jsPDF();
+                doc.setFontSize(40);
+                doc.addImage(img, "JPEG", 10, 0, 185, 185);
+                $("#btnNext").removeAttr("disabled");
+                $("#btnDownload").attr("disabled", "disabled");
+                doc.save();
+            })
+            .catch(e => {
+                console.log(e);
+            })
+    }
+</script>
+<% include ./partials/footer %>

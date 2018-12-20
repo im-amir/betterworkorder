@@ -1,0 +1,181 @@
+<% include ../partials/header2 %>
+<div style="margin:10em 20em; background: white" class="mainDiv">
+<form class="text-center border border-light p-5 animated bounceInLeft" style="background: #eaf0f9" method="POST" action="/orders/new">
+    <a class="btn btn-default form-control waves-effect" href="/" style="font-weight: bold; padding: 1em 3em 1em 3em;color: #fff;font-family: 'Oswald', sans-serif;"><i class="fas fa-long-arrow-alt-left mr-3"></i>Go Back</a>
+    <section id="create" class="mt-5">
+        <p class="h4 mb-4" style="font-family: 'Oswald', sans-serif;">Order Details</p>
+        <div class="md-form">
+            <input type="text" id="title" name="title" class="form-control" required>
+            <label for="title" style="color: #000;font-family: 'Oswald', sans-serif;">*Title</label>
+        </div>
+        <!--Input Fields-->
+        <div class="md-form date" data-target-input="nearest" id="start">
+            <label for="start" style="color: #000;font-family: 'Oswald', sans-serif;">*Start Date <span class="ml-4">(format: dd/mm/yyyy)</span></label>
+            <input type='text' class="datetimepicker-input datetimepicker" style="margin-left: -0.1em ; margin-top: 0.7em; width: 95%;" data-target="#start" name="start" required />
+            <span class="input-group-addon" style="float: right; border: none; background: #EAF0F9" data-target="#start" data-toggle="datetimepicker">
+              <span class="fa fa-calendar"></span>
+            </span>
+        </div>
+        <div class="md-form date mt-5" data-target-input="nearest" id="end">
+            <label for="end" style="color: #000;font-family: 'Oswald', sans-serif;">*End Date <span class="ml-4">(format: dd/mm/yyyy)</span></label>
+            <input type='text' class="datetimepicker-input datetimepicker" style="margin-left: -0.1em ; margin-top: 0.7em; width: 95%;" data-target="#end" name="stop" required />
+            <span class="input-group-addon" style="float: right; border: none; background: #EAF0F9" data-target="#end" data-toggle="datetimepicker">
+              <span class="fa fa-calendar"></span>
+            </span>
+        </div>
+        <div class="md-form">
+            <textarea type="text" id="exampleFormControlTextarea1" class="form-control md-textarea" rows="2" name="services" required></textarea>
+            <label for="exampleFormControlTextarea1" style="color: #000;font-family: 'Oswald', sans-serif;">*Service Provided</label>
+            <i class="fa fa-pencil prefix" style="margin-left: 13em"></i>
+        </div>
+
+        <div class="md-form">
+            <textarea type="text" id="exampleFormControlTextarea2" class="form-control md-textarea" rows="2" name="recommendations" required></textarea>
+            <label for="exampleFormControlTextarea2" style="color: #000;font-family: 'Oswald', sans-serif;">*Recommendations</label>
+            <i class="fa fa-pencil prefix" style="margin-left: 13em"></i>
+        </div>
+        <div class="md-form">
+            <textarea type="text" id="exampleFormControlTextarea3" class="form-control md-textarea" rows="2" name="notes" required></textarea>
+            <label for="exampleFormControlTextarea2" style="color: #000;font-family: 'Oswald', sans-serif;">Notes</label>
+            <i class="fa fa-pencil prefix" style="margin-left: 13em"></i>
+        </div>
+        <div class="md-form">
+            <textarea type="text" id="exampleFormControlTextarea3" class="form-control md-textarea" rows="2" name="partsMaterials" required></textarea>
+            <label for="exampleFormControlTextarea2" class="label" style="color: #000;font-family: 'Oswald', sans-serif;">Parts and Materials</label>
+            <i class="fa fa-pencil prefix" style="margin-left: 13em"></i>
+        </div>
+        <br><br>
+    </section>
+    <section>
+        <div class="animated fadeIn">
+            <div class="custom-control custom-checkbox" style="float: left;">
+                <input type="checkbox" class="custom-control-input" id="clientCheck" name="clientCheck">
+                <label class="custom-control-label" for="clientCheck" style="color: #000;font-family: 'Oswald', sans-serif;">Import Client</label>
+            </div>
+            <br><br>
+            <label>Select Client</label>
+            <br>
+            <select disabled id="clientSelect" name="clientSelect" class="browser-default custom-select mb-4 form-control">
+                <option value="" disabled selected>Choose option</option>
+                <% clients.forEach(function (client) { %>
+                <option name="<%= client._id %>" value="<%= client._id %>"><%= client.company %></option>
+                <% }) %>
+            </select>
+                <br><br>
+
+                <div class="md-form">
+                    <input type="text" class="form-control" id="clientCompany" name="clientCompany" required>
+                    <label for="clientCompany" style="color: #000;font-family: 'Oswald', sans-serif;">*Company</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="clientContactPerson" name="clientContactPerson" required>
+                    <label for="clientContactPerson" style="color: #000;font-family: 'Oswald', sans-serif;">*Contact Person</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="clientEmail" name="clientEmail" required>
+                    <label for="clientEmail" style="color: #000;font-family: 'Oswald', sans-serif;">*Email</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="clientPhone" name="clientPhone" required>
+                    <label for="clientPhone" style="color: #000;font-family: 'Oswald', sans-serif;">*Phone</label>
+                </div>
+                <div class="md-form">
+                    <input type="text" class="form-control" id="clientAddress" name="clientAddress" required>
+                    <label for="clientAddress" style="color: #000;font-family: 'Oswald', sans-serif;">*Address</label>
+                </div>
+
+                <br><br>
+
+
+            <div class="custom-control custom-checkbox" style="float: left;">
+                <input type="checkbox" class="custom-control-input" id="techCheck" name="techCheck">
+                <label class="custom-control-label" for="techCheck" style="color: #000;font-family: 'Oswald', sans-serif;">Import Technician</label>
+            </div>
+            <br><br>
+
+            <label style="color: #000;font-family: 'Oswald', sans-serif;">Select Technicians</label>
+            <select disabled id="techSelect" class="browser-default custom-select mb-4" name="techSelect">
+                <option value="" disabled selected>Choose option</option>
+                <% technicians.forEach(function (technician) { %>
+                <option name="<%= technician._id %>" value="<%= technician._id %>"><%= technician.company %></option>
+                <% }) %>
+            </select>
+            <br><br>
+
+            <div class="md-form">
+                <input type="text" class="form-control" id="techCompany" name="techCompany" required>
+                <label for="techCompany" style="color: #000;font-family: 'Oswald', sans-serif;">*Company</label>
+            </div>
+            <div class="md-form">
+                <input type="text" class="form-control" id="techContactPerson" name="techContactPerson" required>
+                <label for="techContactPerson" style="color: #000;font-family: 'Oswald', sans-serif;">*Contact Person</label>
+            </div>
+            <div class="md-form">
+                <input type="text" class="form-control" id="techEmail" name="techEmail" required>
+                <label for="techEmail" style="color: #000;font-family: 'Oswald', sans-serif;">*Email</label>
+            </div>
+            <div class="md-form">
+                <input type="text" class="form-control" id="techPhone" name="techPhone" required>
+                <label for="techPhone" style="color: #000;font-family: 'Oswald', sans-serif;">*Phone</label>
+            </div>
+            <div class="md-form">
+                <input type="text" class="form-control" id="techAddress" name="techAddress" required>
+                <label for="techAddress" style="color: #000;font-family: 'Oswald', sans-serif;">*Address</label>
+            </div>
+            <br><br>
+
+            <button type="submit" class="btn btn-dark form-control" style="font-family: 'Oswald', sans-serif;" id="submit">Submit</button>
+            <button class="btn btn-default form-control" style="font-family: 'Oswald', sans-serif;"><a href="/orders" style="color: white;">Back</a></button>
+        </div>
+    </section>
+</form>
+</div>
+<script type="text/javascript">
+    var update_form_client = function () {
+        if ($("#clientCheck").is(":checked")) {
+            $('#clientSelect').prop('disabled', false);
+            $('#clientCompany').prop('disabled', 'disabled');
+            $('#clientContactPerson').prop('disabled', 'disabled');
+            $('#clientEmail').prop('disabled', 'disabled');
+            $('#clientPhone').prop('disabled', 'disabled');
+            $('#clientAddress').prop('disabled', 'disabled');
+        }
+        else {
+            $('#clientSelect').prop('disabled', 'disabled');
+            $('#clientCompany').prop('disabled', false);
+            $('#clientContactPerson').prop('disabled', false);
+            $('#clientEmail').prop('disabled', false);
+            $('#clientPhone').prop('disabled', false);
+            $('#clientAddress').prop('disabled', false);
+
+        }
+    };
+    $(update_form_client);
+    $("#clientCheck").change(update_form_client);
+
+    var update_form_tech = function () {
+        if ($("#techCheck").is(":checked")) {
+            $('#techSelect').prop('disabled', false);
+            $('#techCompany').prop('disabled', 'disabled');
+            $('#techContactPerson').prop('disabled', 'disabled');
+            $('#techEmail').prop('disabled', 'disabled');
+            $('#techPhone').prop('disabled', 'disabled');
+            $('#techAddress').prop('disabled', 'disabled');
+        }
+        else {
+            $('#techSelect').prop('disabled', 'disabled');
+            $('#clientSelect').prop('disabled', 'disabled');
+            $('#techCompany').prop('disabled', false);
+            $('#techContactPerson').prop('disabled', false);
+            $('#techEmail').prop('disabled', false);
+            $('#techPhone').prop('disabled', false);
+            $('#techAddress').prop('disabled', false);
+        }
+    };
+    $(update_form_tech);
+    $("#techCheck").change(update_form_tech);
+    $(function () {
+        $('.datetimepicker').datetimepicker();
+    });
+</script>
+<% include ../partials/footer %>
